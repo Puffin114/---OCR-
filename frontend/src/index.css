@@ -1,0 +1,80 @@
+:root {
+  --bd-blue: #2468f2;
+  --mismatch: #fff1f0;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f3f5f9; }
+.topnav { height: 58px; background: #fff; border-bottom: 1px solid #eef0f4; box-shadow: 0 1px 4px rgba(0,0,0,0.04); display: flex; align-items: center; padding: 0 24px; gap: 20px; }
+.topnav .brand { font-weight: 700; font-size: 16px; color: #1a1a1a; letter-spacing: .5px; }
+.topnav a { color: #555; text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: all .2s; }
+.topnav a:hover { color: var(--bd-blue); background: #f2f6ff; }
+.topnav a.active { color: var(--bd-blue); background: #eef3ff; font-weight: 600; }
+.page { padding: 22px; }
+.viewer-wrap { position: relative; display: block; user-select: none; width: 100%; }
+.viewer-wrap img { display: block; max-width: 100%; width: 100%; }
+.sel-rect { position: absolute; border: 2px solid var(--bd-blue); background: rgba(36,104,242,0.12); pointer-events: none; }
+.anno-box { position: absolute; border: 2px solid; pointer-events: none; box-sizing: border-box; }
+.anno-box-active {
+  z-index: 5;
+  animation: anno-pulse 1.2s ease-in-out infinite;
+}
+@keyframes anno-pulse {
+  0%, 100% { background: color-mix(in srgb, var(--hl, #2468f2) 25%, transparent); }
+  50%      { background: color-mix(in srgb, var(--hl, #2468f2) 60%, transparent); }
+}
+.anno-label { position: absolute; font-size: 11px; color: #fff; padding: 0 3px; border-radius: 2px; white-space: nowrap; pointer-events: none; }
+.anno-lead { position: absolute; border-top: 2px dashed; pointer-events: none; }
+.mismatch-cell { background: var(--mismatch); }
+.row-active > td { background: #e6f0ff !important; }
+.group-section > td { background: #f0f2f5 !important; font-weight: 600; color: #333; }
+.group-parent > td { background: #fafcff !important; }
+.group-row > td { background: #f6f9ff !important; border-top: 1px dashed #d6e2ff; }
+
+/* ---------- 动画（登录页核心） ---------- */
+@keyframes floatY  { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-13px)} }
+@keyframes floatSm { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-7px)}  }
+@keyframes fadeUp  { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.cloud-art      { animation: floatY 4.2s ease-in-out infinite; }
+.cloud-art .s1  { animation: floatSm 3.4s ease-in-out infinite; }
+.card           { animation: fadeUp .7s ease .1s both; }
+.input:focus-within { border-color:#2468f2 !important; box-shadow:0 0 0 3px rgba(36,104,242,.12) !important; }
+.btn:hover      { transform:translateY(-1px); box-shadow:0 10px 26px rgba(36,104,242,.36); }
+
+/* ---------- 登录页布局 ---------- */
+.login-wrap { min-height:100vh; display:flex; background:linear-gradient(135deg,#eaf1ff 0%,#f7f9ff 45%,#e9f0ff 100%); }
+.login-left { flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:0 3% 0 5%; position:relative; }
+.login-logo { position:absolute; top:38px; left:5%; display:flex; align-items:center; gap:9px; font-weight:700; font-size:20px; color:#1a2b4a; }
+.login-left h1 { font-size:52px; margin:0 0 14px; color:#1a2340; letter-spacing:1px; }
+.login-grad { font-size:28px; font-weight:700; letter-spacing:7px;
+  background:linear-gradient(90deg,#2468f2,#5a93ff); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:24px; }
+.login-desc { max-width:520px; line-height:2; color:#5b6478; font-size:17px; }
+.login-pills { display:flex; gap:14px; margin-top:32px; justify-content:center; }
+.login-pill { padding:9px 20px; border-radius:22px; background:#eef3ff; color:#2468f2; font-size:15px; border:1px solid #dbe6ff; }
+.login-right { width:40%; min-width:400px; display:flex; align-items:center; justify-content:flex-start; padding:0 0 0 20px; }
+
+/* 登录卡 */
+.login-card { width:100%; max-width:380px; }
+.login-card h2 { font-size:28px; margin:0 0 8px; color:#1a2340; }
+.login-card .sub { color:#8a93a6; font-size:14px; margin-bottom:26px; }
+.login-field-label { font-size:13px; color:#4a556e; margin:16px 0 6px; }
+.login-divider { display:flex; align-items:center; gap:12px; color:#aeb6c6; font-size:12px; margin:22px 0 14px; }
+.login-divider::before, .login-divider::after { content:''; flex:1; height:1px; background:#e6eaf2; }
+.login-foot { text-align:center; color:#8a93a6; font-size:14px; }
+.login-link { color:#2468f2; cursor:pointer; }
+
+/* 云插画 */
+.cloud-art { position:relative; width:375px; height:212px; align-self:center; margin:10px 0 44px; }
+.cloud-main { position:absolute; left:88px; top:88px; width:200px; height:80px;
+  background:linear-gradient(180deg,#8fb6ff,#2f74ff); border-radius:50px; box-shadow:0 20px 40px rgba(47,116,255,.35); }
+.cloud-main::before { content:''; position:absolute; top:-45px; left:38px; width:95px; height:95px;
+  background:linear-gradient(180deg,#a9c7ff,#4f86ff); border-radius:50%; }
+.cloud-main::after { content:''; position:absolute; top:-30px; left:108px; width:68px; height:68px;
+  background:linear-gradient(180deg,#bcd3ff,#5f92ff); border-radius:50%; }
+.cloud-s { position:absolute; background:#dbe8ff; border-radius:24px; opacity:.92; box-shadow:0 8px 18px rgba(47,116,255,.15); }
+.cloud-s.a { width:60px; height:24px; left:20px; top:42px; }
+.cloud-s.b { width:50px; height:20px; right:25px; top:18px; }
+
+@media (max-width: 920px) {
+  .login-left { display:none; }
+  .login-right { width:100%; min-width:0; }
+}

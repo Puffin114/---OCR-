@@ -1,0 +1,32 @@
+server:
+  backend_port: 8000
+
+cloud:
+  # 百度智能云「文档抽取」OpenAPI 凭证（个人API，仅约100张额度，务必省着用）
+  api_key: ""
+  secret_key: ""
+  # 鉴权与异步接口地址（实现时以官方文档确认，可按需覆盖）
+  token_url: "https://aip.baidubce.com/oauth/2.0/token"
+  submit_url: "https://aip.baidubce.com/rest/2.0/brain/online/v1/extract/task"
+  result_url: "https://aip.baidubce.com/rest/2.0/brain/online/v1/extract/query_task"
+  # 字段清单：功能跑通后填平台配好的清单版本id；留空则用本地 labels.json 兜底生成 manifest
+  manifest_version_id: ""
+  use_local_manifest_as_fallback: true
+
+  submit_qps: 2
+  poll_interval_sec: 30
+  poll_timeout_sec: 300
+  max_retries: 2
+  # 二次标注框选识别：true 时对框选区域走实时 OCR（消耗额度）；false 时用本地 parser 解析（零额度）
+  recognize_use_ocr: true
+  ocr_url: "https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic"
+
+paths:
+  annotations_dir: "./annotations"
+  parser_dir: "./parser"
+  doc_dir: "./doc"
+  storage_dir: "./.data"
+
+eval:
+  default_match_mode: "exact"   # 综合汇总口径：micro
+  aggregate: "micro"

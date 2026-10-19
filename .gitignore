@@ -1,0 +1,23 @@
+# 配置文件：本包内的 config.yaml 已脱敏（仅占位符），随仓库提交无妨。
+# 若你在其中填入真实凭证，请勿提交——建议另存为 config.local.yaml 并忽略它。
+config.local.yaml
+
+# 运行期数据与缓存
+.data/
+*.sqlite
+*.db
+
+# 依赖与运行时（本包未包含，安装后忽略）
+.tooling/
+node_modules/
+frontend/dist/
+package-lock.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store

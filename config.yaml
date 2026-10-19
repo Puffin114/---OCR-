@@ -1,0 +1,35 @@
+server:
+  backend_port: 8000
+cloud:
+  # 百度智能云「文档抽取」OpenAPI 凭证 —— 已脱敏，请填入自己的 AK/SK
+  api_key: "<YOUR_BAIDU_API_KEY>"
+  secret_key: "<YOUR_BAIDU_SECRET_KEY>"
+  token_url: https://aip.baidubce.com/oauth/2.0/token
+  submit_url: https://aip.baidubce.com/rest/2.0/brain/online/v1/extract/task
+  result_url: https://aip.baidubce.com/rest/2.0/brain/online/v1/extract/query_task
+  manifest_version_id: ''
+  use_local_manifest_as_fallback: true
+  submit_qps: 2
+  poll_interval_sec: 30
+  poll_timeout_sec: 300
+  max_retries: 2
+  recognize_use_ocr: true
+  ocr_url: https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic
+paths:
+  # 数据集三类目录与运行期存储目录；按需改为自己的本地路径
+  annotations_dir: "./annotations"
+  parser_dir: "./parser"
+  doc_dir: "./doc"
+  storage_dir: "./.data"
+eval:
+  default_match_mode: exact
+  aggregate: micro
+auth:
+  # 登录账号 —— 已脱敏，请改为自己的账号密码
+  username: "admin"
+  password: "<YOUR_LOGIN_PASSWORD>"
+oneapi:
+  # OneAPI（OpenAI 兼容网关）—— 已脱敏，仅后端使用，请填入自己的 key/地址/模型
+  api_key: "<YOUR_ONEAPI_KEY>"
+  api_base: "<YOUR_ONEAPI_BASE_URL>"
+  model: "<YOUR_MODEL_NAME>"
